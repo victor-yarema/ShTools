@@ -6,6 +6,7 @@
 	exit $?
 	find . \
 		-not -path '*/.git/*' \
+		-not -path '*/*.s/*' \
 		-type f \
 		-name '*.sh' \
 		-exec sh -c '
