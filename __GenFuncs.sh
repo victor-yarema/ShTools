@@ -1,10 +1,8 @@
 (
 	set -uC
-	cd "${ShTools}" ||
+	Dir="$1"
+	cd "${Dir}" ||
 	exit $?
-
-	Target="$1"
-	rm -f "${Target}"
 	find . \
 		-not -path '*/.git/*' \
 		-type f \
@@ -12,6 +10,6 @@
 		-exec sh -c '
 			FileName="$( basename "{}" )" ;
 			FuncName="$( echo "${FileName}" | sed "s/\.[^.]*$//g" )" ;
-			echo "${FuncName}() { . \"\${ShTools}/${FileName}\" \"\$@\" ; }" >> "'"${Target}"'"
+			echo "${FuncName}() { . '"'${Dir}"'/${FileName}'"'"' \"\$@\" ; }"
 			' \;
 )
