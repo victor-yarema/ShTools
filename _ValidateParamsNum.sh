@@ -1,6 +1,5 @@
 (
-	. "${ShTools}/_FuncBasic.sh" ||
-	return $?
+	_FuncBasic || exit $?
 
 	if [ -z ${FUNCNAME[0]+x} ];
 	then
