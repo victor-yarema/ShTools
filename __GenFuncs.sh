@@ -7,9 +7,5 @@
 		-not -path '*/*.s/*' \
 		-type f \
 		-name '*.sh' \
-		-exec sh -c '
-			FileName="$( basename "{}" )" ;
-			FuncName="$( echo "${FileName}" | sed "s/\.[^.]*$//g" )" ;
-			echo "${FuncName}'"${FuncNameSuffix}() { . '"'{}'"'"' \"\$@\" ; }"
-			' \;
+		| sed 's/^\(.*\)\/\([^/]*\)\(\.[^.]*\)$/\2'"${FuncNameSuffix}() { . '"'\1\/\2\3'"'"' "$@" ; }/'
 )
