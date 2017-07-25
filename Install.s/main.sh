@@ -26,6 +26,10 @@ Main() (
 
 	mkdir -p "${Dir}" &&
 	cd "${Dir}" &&
+	{
+		git --version ||
+		sudo apt install git
+	} &&
 	git clone https://victor-yarema@github.com/victor-yarema/ShTools . &&
 	git config core.fileMode false &&
 	eval "$( . "${Dir}/__GenFuncs.sh" "${Dir}" '' )" &&
