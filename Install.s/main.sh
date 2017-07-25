@@ -30,8 +30,13 @@ Main() (
 		git --version ||
 		sudo apt install git
 	} &&
-	git clone https://victor-yarema@github.com/victor-yarema/ShTools . &&
-	git config core.fileMode false &&
+	{
+		[ -f '__GenFuncs.sh' ] ||
+		{
+			git clone https://victor-yarema@github.com/victor-yarema/ShTools . &&
+			git config core.fileMode false
+		}
+	} &&
 	eval "$( . "${Dir}/__GenFuncs.sh" "${Dir}" '' )" &&
 	mkdir -p "${SysDir}" &&
 	AppendText "${SysDir}/ShTools" '# Ref' "ShToolsDir='${Dir}'"$'\n' &&
