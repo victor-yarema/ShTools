@@ -33,7 +33,7 @@ Main() (
 	{
 		[ -f '__GenFuncs.sh' ] ||
 		{
-			git clone https://victor-yarema@github.com/victor-yarema/ShTools . &&
+			git clone --depth 1 https://victor-yarema@github.com/victor-yarema/ShTools . &&
 			git config core.fileMode false
 		}
 	} &&
