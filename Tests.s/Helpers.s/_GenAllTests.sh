@@ -12,6 +12,7 @@
 		-exec sh -c '
 			FileName="$( basename "{}" )" ;
 			FuncName="$( echo "${FileName}" | sed "s/\.[^.]*$//g" )" ;
+			echo ">&2 echo \"Testing ${FuncName} ...\" &&"
 			echo "${FuncName}'"${FuncNameSuffix}"' &&"
 			' \;
 	echo $'echo \'All tests passes.\''
